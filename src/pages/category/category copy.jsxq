@@ -1,0 +1,67 @@
+import React,{Component} from 'react'
+import {Card, Icon ,Button,Table} from 'antd'
+import LinkButton from '../../component/link-button';
+
+
+const data = [
+    {
+    "_id": "5c2ed631f352726338607046",
+    "name": "aa"
+    },
+    {
+    "_id": "5c2ed647f352726338607047",
+    "name": "bb"
+    },
+    {
+    "_id": "5c2ed64cf352726338607048",
+    "name": "cc"
+    },
+     {
+    "_id": "5c2ed631f352726338607049",
+    "name": "aa"
+    },
+]
+
+const columns = [
+        {
+        title: '分类的名称',
+        dataIndex: 'name',
+        // 回调函数 要的是渲染后反出的返回值 render的回调函数接收的是text的值传给name
+        //   render: text => <a href="javascript:;">{text}</a>,   
+        },
+        {
+        title: '操作',
+        render:()=><LinkButton>修改分类</LinkButton>
+        },
+    
+    ];
+
+export default class Category  extends Component{
+    render(){
+    
+        const extra=(
+                    <Button type="primary">
+                        <Icon type="plus"></Icon>
+                        添加
+                    </Button>
+                )
+        return (
+            <Card extra={extra} >
+                {/* <Table
+                    columns={columns}
+                    dataSource={data}
+                    bordered
+                    pagination={{defaultPageSize:5,showQuickJumper:true}}
+                /> */}
+
+                <Table
+    columns={columns}
+    dataSource={data}
+    bordered
+    title={() => 'Header'}
+    footer={() => 'Footer'}
+  />
+            </Card>
+        )
+    }
+}
